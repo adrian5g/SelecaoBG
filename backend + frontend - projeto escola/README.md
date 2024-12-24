@@ -30,7 +30,7 @@ Ser um pequeno gerenciador de cursos onde você pode gerenciar os cursos, as dis
 ![3](images/form_disciplina.png)
 ![3](images/form_nota.png)
 
-#### 2. Formulários
+#### 2. Listagens
 
 ![4](images/listagem_alunos.png)
 ![5](images/listagem_cursos.png)
