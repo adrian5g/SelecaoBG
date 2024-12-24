@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% block conteudo %}
+<main class="container">
+  <div class="quadro">
+    <h1>Periodos</h1>
+    <div class="periodos">
+      {% for periodo in periodos %} {% if periodo == periodo_selecionado %}
+      <a class="periodo periodo--sel">{{periodo}}</a>
+      {% else %}
+      <a href="{% url 'listar_notas' aluno.id periodo %}" class="periodo">{{periodo}}</a>
+      {% endif %} {% endfor %}
+    </div>
+    <h1>Notas</h1>
+
+    <table>
+      <tr>
+        {% for disciplina in disciplinas %}
+        <th>{{ disciplina.nome }}</th>
+        {% endfor %}
+      </tr>
+
+      <tr>
+        {% for nota in notas %}
+        <td>
+          {% if nota.valor %}
+          <p class="nota">{{ nota.valor }}</p>
+          <div class="modal">
+            <div class="modal-conteudo">
+              <div class="modal-fechar">
+                <i data-lucide="x"></i>
+              </div>
+              <p>O que deseja fazer?</p>
+              <div class="modal-conteudo-opcoes">
+                <a
+                  class="btn btn--red"
+                  href="{% url 'remover_nota' nota.aluno.id nota.disciplina.id %}"
+                  >Excluir</a
+                >
+                <a class="btn btn--blue" href="{% url 'editar_nota' nota.id %}">Editar</a>
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <a href="{% url 'cadastrar_nota' aluno.id nota.disciplina.id %}" class="sem-nota"
+            >Sem nota</a
+          >
+          {% endif %}
+        </td>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+</main>
+
+<script>
+  document.querySelectorAll('.nota').forEach((item) => {
+    console.log('deu certo');
+    item.addEventListener('click', (event) => {
+      const celula = item.parentElement;
+
+      const modal = celula.querySelector('.modal');
+      const modalFechar = modal.querySelector('.modal-fechar');
+
+      modal.style.display = 'flex';
+      const eventoFechar = modalFechar.addEventListener('click', (event2) => {
+        modalFechar.removeEventListener('click', eventoFechar);
+
+        modal.style.display = 'none';
+      });
+    });
+  });
+</script>
+{% endblock %}

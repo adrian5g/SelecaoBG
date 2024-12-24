@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- ESTILIZAÇÃO -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+
+    <!-- ÍCONES -->
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        lucide.createIcons();
+      });
+    </script>
+
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+    <!-- CABEÇALHO -->
+    <header class="topbar">
+      <img src="{% static 'img/logo.png' %}" alt="logo" class="logo" />
+      <nav class="links">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'listar_cursos' %}">Cursos</a>
+        <a href="{% url 'listar_alunos' %}">Alunos</a>
+      </nav>
+    </header>
+
+    <!-- CONTEÚDO -->
+    {% block conteudo %} {% endblock %}
+
+    <!-- RODAPÉ -->
+    <footer class="bottombar">
+      <p>Feito com &hearts; por <a href="https://github.com/adrian5g">adrian5g</a></p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'baseForm.html' %} {% block options %}
+<div class="botoes">
+  <a href="{% url 'listar_alunos' %}" class="btn">
+    <i data-lucide="arrow-left"></i>
+    <p>Voltar</p>
+  </a>
+</div>
+{% endblock %} {% block titulo %}
+<h1>Aluno</h1>
+{% endblock %}

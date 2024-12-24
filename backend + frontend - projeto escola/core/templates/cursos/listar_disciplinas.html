@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+{% block conteudo %}
+<main class="container">
+  <div class="botoes">
+    <!-- <a class="btn btn--blue" href="{% url 'listar_cursos' %}">
+      <i data-lucide="arrow-left"></i>
+      <p>Voltar</p>
+    </a> -->
+
+    <a class="btn" href="{% url 'cadastrar_disciplina' curso_id %}">
+      <i data-lucide="square-plus"></i>
+      <p>Nova Disciplina</p>
+    </a>
+  </div>
+
+  <div class="quadro">
+    <h1>Disciplinas</h1>
+
+    <!-- {% for curso in cursos %}
+      {% endfor %} 
+    -->
+
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Período Requerido</th>
+        <th>Ações</th>
+      </tr>
+
+      {% for disciplina in disciplinas %}
+      <tr>
+        <td>{{disciplina.nome}}</td>
+        <td>{{disciplina.periodo_requerido}}</td>
+        <td>
+          <div>
+            <a class="btn btn--red" href="{% url 'remover_disciplina' disciplina.curso.id disciplina.id %}">
+              <i data-lucide="trash-2"></i>
+            </a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</main>
+{% endblock %}
