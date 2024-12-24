@@ -41,4 +41,3 @@ Ser um pequeno gerenciador de cursos onde você pode gerenciar os cursos, as dis
 
 ![8](images/modal_nota.png)
 ![8](images/tela_principal.png)
-
