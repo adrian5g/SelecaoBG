@@ -78,9 +78,6 @@ def cadastrar_disciplina(request, id):
     curso = Curso.objects.get(pk=id)
     form = DisciplinaForm(request.POST or None, curso_default=curso)
 
-    # periodo = form.fields['periodo_requerido'].initial
-    # perido_invalido =  0 > periodo > curso.periodos
-
     if form.is_valid():
         form.save()
         return redirect('listar_disciplinas', id)
@@ -156,7 +153,7 @@ def listar_notas(request, id, periodo):
 
     notas_periodo_selecionado = []
     for indice, disciplina in enumerate(disciplinas_periodo_selecionado):
-        notas_periodo_selecionado.append({ 'disciplina': disciplina })
+        notas_periodo_selecionado.append({'disciplina': disciplina})
 
         for nota in notas:
             if nota.disciplina.id == disciplina.id:
@@ -177,7 +174,8 @@ def cadastrar_nota(request, id, disciplina_id):
     aluno = Aluno.objects.get(pk=id)
     disciplina = Disciplina.objects.get(pk=disciplina_id)
 
-    form = NotaForm(request.POST or None, aluno_default=aluno, disciplina_default=disciplina)
+    form = NotaForm(request.POST or None, aluno_default=aluno,
+                    disciplina_default=disciplina)
 
     if form.is_valid():
         form.save()
@@ -208,6 +206,7 @@ def editar_nota(request, id):
     }
 
     return render(request, 'alunos/cadastrar_nota.html', context)
+
 
 def remover_nota(request, id, disciplina_id):
     aluno = Aluno.objects.get(pk=id)

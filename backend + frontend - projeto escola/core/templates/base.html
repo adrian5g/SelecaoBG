@@ -7,7 +7,7 @@
     <title>Document</title>
 
     <!-- ESTILIZAÇÃO -->
-    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
 
     <!-- ÍCONES -->
     <script defer src="https://unpkg.com/lucide@latest"></script>
@@ -17,13 +17,12 @@
       });
     </script>
 
-    {% block head %}
-    {% endblock %}
+    {% block head %} {% endblock %}
   </head>
   <body>
     <!-- CABEÇALHO -->
     <header class="topbar">
-      <img src="{% static 'img/logo.png' %}" alt="logo" class="logo" />
+      <img src="{% static 'assets/logo.png' %}" alt="logo" class="logo" />
       <nav class="links">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'listar_cursos' %}">Cursos</a>

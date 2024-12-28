@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block conteudo %}
+{% extends 'base.html' %} {% load static %} {% block conteudo %}
+
 <main class="container">
   <div class="quadro">
     <h1>Periodos</h1>
@@ -51,22 +52,5 @@
   </div>
 </main>
 
-<script>
-  document.querySelectorAll('.nota').forEach((item) => {
-    console.log('deu certo');
-    item.addEventListener('click', (event) => {
-      const celula = item.parentElement;
-
-      const modal = celula.querySelector('.modal');
-      const modalFechar = modal.querySelector('.modal-fechar');
-
-      modal.style.display = 'flex';
-      const eventoFechar = modalFechar.addEventListener('click', (event2) => {
-        modalFechar.removeEventListener('click', eventoFechar);
-
-        modal.style.display = 'none';
-      });
-    });
-  });
-</script>
+<script src="{% static 'scripts/nota_modal.js' %}"></script>
 {% endblock %}

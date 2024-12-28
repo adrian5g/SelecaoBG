@@ -7,7 +7,7 @@
     <title>Formualário</title>
 
     <!-- ESTILIZAÇÃO -->
-    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
 
     <!-- ÍCONES -->
     <script defer src="https://unpkg.com/lucide@latest"></script>
@@ -19,13 +19,9 @@
   </head>
   <body>
     <main class="container">
-      <div class="options">
-        {% block options %}
-        {% endblock %}
-      </div>
+      <div class="options">{% block options %} {% endblock %}</div>
       <div class="quadro">
-        {% block titulo %}
-        {% endblock %}
+        {% block titulo %} {% endblock %}
 
         <form method="post">
           {% csrf_token %} {{ form }}
